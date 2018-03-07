@@ -19,6 +19,8 @@ public class CanvasView extends View {
     private static int width;
     private static int height;
     private GameManager gameManager;
+    private Paint paint;
+    private Canvas canvas;
 
 
     public CanvasView(Context context, @Nullable AttributeSet attrs) {
@@ -41,7 +43,12 @@ public class CanvasView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        this.canvas = canvas;
         gameManager.onDraw(canvas);
+    }
+
+    public void drawCircle(SimpleCircle circle){
+        canvas.drawCircle(circle.getX(), circle.getY(), circle.getRadius(), paint);
     }
 
     @Override
